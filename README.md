@@ -23,15 +23,14 @@
 | Next 8 Clauses     | 0.09%     |
 | Next 12 Clauses     | 0.04%     |
 
+Experiment 1:
 
-Summary(Put the position category with a probability less than 1% into the "Other" class):
+Randomly selecting cause position based on the position probability above. Carry out the experiments 25 times and each time select 10% of all dataset. (Same experiment set up with the paper)
 
-| Position      | Percentage     |
-| ---------- | :-----------:  | 
-| Previous 3 Clauses     | 1.70%     |
-| Previous 2 Clauses     | 8.12%     |
-| Previous 1 Clauses     | 54.45%     |
-| In the same Clauses     | 23.58%     |
-| Next 1 Clauses     | 7.47%     |
-| Next 2 Clauses     | 2.21%     |
-| Other     | 2.46%     |
+Average precision, recall and F1:
+
+Precision: 0.5692
+
+Recall: 0.5546
+
+F1: 0.5618
