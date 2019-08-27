@@ -23,10 +23,12 @@
 | Next 8 Clauses     | 0.09%     |
 | Next 12 Clauses     | 0.04%     |
 
-### Position bias experiemnts
-#### Experiment 1:  
+### Position bias experiemnts  
+#### Experiment 1   
 Randomly selecting cause position based on the position probability above. Carry out the experiments 25 times and each time select 10% of all dataset. (Same experiment set up with the paper)  
 Average precision, recall and F1:  
 Precision: 0.5692  
 Recall: 0.5546  
 F1: 0.5618  
+
+#### Experiment 2  
