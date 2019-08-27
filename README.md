@@ -24,7 +24,6 @@
 | Next 12 Clauses     | 0.04%     |
 
 Experiment 1:
-
 Randomly selecting cause position based on the position probability above. Carry out the experiments 25 times and each time select 10% of all dataset. (Same experiment set up with the paper)
 
 Average precision, recall and F1:
