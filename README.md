@@ -32,7 +32,8 @@ Recall: 0.5546
 F1: 0.5618  
 
 #### Experiment 2 
-Randomly selecting cause position based on position probability above from all datatset.
-Precision: 0.5639  
-Recall: 0.5478  
-F1: 0.5557  
+Randomly selecting cause position based on position probability above. Carry out the experiments 25 times and each time test data is all dataset.  
+Average precision, recall and F1:   
+Precision: 0.5639    
+Recall: 0.5478    
+F1: 0.5557    
