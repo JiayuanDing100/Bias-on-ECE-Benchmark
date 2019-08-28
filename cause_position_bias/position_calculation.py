@@ -91,18 +91,18 @@ def get_none_exist_prob(lst):
         return(False, (1-sum_prob) / len(lst))
 
 
-def predict(prob_lst, id_lst):
-    np.random.seed(0)
+def predict(prob_lst, id_lst, k):
+    np.random.seed(k)
     p = np.array(prob_lst)
     index = np.random.choice(id_lst, p=p.ravel())
     return index
 
 
-def test_all():
+def test_all(k):
     annotated_cause = 0
     correct_cause = 0
     proposed_cause = 2105
-    with open("./clause_keywords_emotion.txt") as fp:
+    with open("../data/clause_keywords_emotion.txt") as fp:
         line = fp.readline()
         cnt = 1
         lst = []
@@ -117,7 +117,7 @@ def test_all():
                 prob_lst, id_lst, true_label_lst = assign_prob(lst)
                 annotated_cause += len(true_label_lst)
 
-                pred_val = predict(prob_lst, id_lst)
+                pred_val = predict(prob_lst, id_lst, k)
                 if pred_val in true_label_lst:
                     correct_cause += 1
 
@@ -136,6 +136,7 @@ def test_all():
     print("precision:", prec)
     print("recall:", recall)
     print("f1:", f1)
+    return(prec, recall, f1)
 
 
 
@@ -143,9 +144,9 @@ def test():
     annotated_cause = 0
     correct_cause = 0
     proposed_cause = 0
-    count = 0
+
     test_id_lst = [random.randint(1, 2106) for _ in range(210)]
-    with open("./clause_keywords_emotion.txt") as fp:
+    with open("../data/clause_keywords_emotion.txt") as fp:
         line = fp.readline()
         cnt = 1
         lst = []
@@ -160,7 +161,7 @@ def test():
                     instance_length(lst)
                     prob_lst, id_lst, true_label_lst = assign_prob(lst)
                     annotated_cause += len(true_label_lst)
-                    pred_val = predict(prob_lst, id_lst)
+                    pred_val = predict(prob_lst, id_lst, 1)
                     if pred_val in true_label_lst:
                         correct_cause += 1
                     #print(prob_lst, id_lst, pred_val)
@@ -171,7 +172,7 @@ def test():
             #print(line.strip())
             line = fp.readline()
     fp.close()
-    print("count:", count)
+
     print("-----------------------------------------")
     print("The summary of cause position:", dic_position)
     result_dic = {}
@@ -201,7 +202,22 @@ def test():
 
 
 if __name__ == "__main__":
-    test_all()
+    prec_all_total = 0
+    recall_all_total = 0
+    f1_all_total = 0
+    for i in range(1, 26):
+        prec_all, recall_all, f1_all = test_all(1)
+        prec_all_total += prec_all
+        recall_all_total += recall_all
+        f1_all_total += f1_all
+    print("Test on all dataset:")
+    print("After running 25 times: \n")
+    print("precision:", prec_all_total / 25)
+    print("recall:", recall_all_total / 25)
+    print("f1:", f1_all_total / 25)
+
+
+
     prec_total = 0
     recall_total =0
     f1_total = 0
